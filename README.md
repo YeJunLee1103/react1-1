@@ -185,4 +185,34 @@ create-react-app
 
 ## 3월 13일 강의 내용
 
+GIT 명령어
+
+git init
+
+- repository 초기화
+
+git status
+
+- repository 상태 표시
+
+git commit - m '커밋메시지'
+
+- repository 변경 내역에 반영
+
+git remote add origin 사용자명/저장소이름.git
+
+- 주소의 저장소를 원격 저장소로 설정
+
+git remote -v
+
+- 저장소 url 확인
+
+git push -u origin main
+
+- main branch로 push
+
+git branch
+
+- branch 목록 표시, 현재 어떤 branch인지 표시
+
 ## GitHub 사용법
