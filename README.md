@@ -1,5 +1,156 @@
 # 이예준 202030227
 
+## 6월 12일 강의
+
+CSS
+
+- CSS는 Cascading Style Sheets의 약자로 스타일링을 위한 언어
+- Cacading이란 계단식이라는 뜻으로 한 엘리먼트에 여러 스타일이 적용될 경우 스타일 간의 충돌을 막기 위해 계단식으로 스타일을 적용시키는 규칙을 가짐
+- 즉 하나의 스타일이 여러 개의 엘리먼트에 적용될 수도 있고 하나의 엘리먼트에도 여러 개의 스타일이 적용될 수 있음
+
+CSS 문법과 선택자
+
+- 태그 직접 사용하기
+- id 선택지 설명 ( 쓰지마 ) js에서 쓰고있음
+- class 선택지. HTML 태그로 특정할 수 없는 스타일은 모두 class로 정의
+- 전체 선택자 Asterisk( \* )
+- 그룹 선택자
+- 상태 선택자
+
+레이아웃과 관련된 속성
+
+- 화면에 엘리먼트를 어떻게 배치할 것인지 정의
+- 가장 중요한 속성은 display
+- 모든 엘리먼트는 기본 disply속성을 갖고 있지만 이 기본값은 변경 가능
+- none은 존재하지만 화면에 보이지 않는 것, js를 넣을 때 많이 사용
+- block은 세로로 정렬, with의 heigh를 가질 수 있따. 크기와 상관없이 한 줄 점유
+- inline은 가로정렬, with의 heigh 가질 수 없음. 컨텐츠의 크기만큼만 공간 점유
+- inline-block은 기본적으로 inline의 특성을 갖지만, with와 height등 block의 특성을 사용할 수 있음
+- 대표적인 block과 inline 태그는 다음과 같음 -Block: div, table, h1-h6, p, from, ul, ol, li, dl, dt, dd, pre 등 -inline: span, a, br, em, srong, input, label, img
+- flex는 컨테이너의 형태로 엘리먼트를 관리. /Mozilla참고
+- 최근엔 Grid 많이사용, Flex가 1차원적이라면 Grid는 2차원 적으로 관리가 가능
+- visblility
+
+Flex.box
+
+폰트와 관련된 속성
+
+- font-size 등 크기를 나다내는 단위 px, em, rem, vm 등
+
+styled-components
+
+- CSS 문법을 그대로 사용하면서 결과물을 스타일링된 컴포넌트 형태로 만들어주는 오픈소스 라이브러리
+- 컴포넌트 개념을 사용하고 있어 리액트 개발에 많이 사용됨
+
+## 6월 11일 강의
+
+Containment와 Sepecialization 같이 사용하기
+
+- Containment를 위해 props.children을 사용하고, Specialization을 위해 직접 정의한 props를 사용
+- Dialog컴포넌트는 이전의 것과 비슷한데 Containment를 위해 끝부분에 props.children을 추가
+- Dialog를 사용하는 SignUpDialog는 Specialization을 위해 props인 title, message에 값을 넣어주고 있고, 입력을 받기 위해 input과 button을 사용
+- 이러한 형태로 Containment와 Specialization 동시에 사용 가능
+
+상속
+
+- 합성과 대비되는 개념으로 상속(inheritance)
+- 자식 클래스는 부모 클래스가 가진 변수나 함수 등의 속성을 모두 갖게 되는 개념
+- 리액트에서는 상속보다는 합성을 통해 새로운 컴포넌트 생성
+
+컨텍스트
+
+- 기존의 일반적인 리액트에서는 데이터가 컴포넌트의 props를 통해 부모에서 자식으로 단방향 전달됐음
+- 컨텍스트는 리액트 컴포넌트들 사이에서 데이터를 기존의 props를 통해 전달하는 방식 대신 '컴포넌트 트리를 통해 곧바로 컴포넌트에 전달하는 새로운 방식' 제공
+- 이것을 통해 어떤 컴포넌트도 데이터에 쉽게 접근 가능
+- 컨텍스트를 사용하면 일일이 props로 전달할 필요 없이 그림처럼 데이터를 필요로 하는 컴포넌트에 곧바로 데이터를 넣을 수 있음
+
+컨텍스트 API
+
+- React.createContext
+- Context.Provider
+- Class.contextType
+- Context.Consumer
+- Context.displayName
+
+useContext
+
+- 함수형 컴포넌트에서 컨텍스트를 사용하기 위해 컴포넌트를 매번 Consumer 컴포넌트로 감싸주는 것보다 더 좋은 방법이 Hook
+- useContext() 혹은 React.createContext() 함수 호출로 생성된 컨텍스트 객체를 인자로 받아 현재 컨텍스트의 값을 리턴
+
+## 6월 5일 강의
+
+Shared State
+
+- Shered stat는 state의 공유를 의미
+- 같은 부모 컴포넌트의 state를 자식 컴포넌트가 공유해서 사용하는 것
+
+온도 변환 함수 작성하기
+
+- 섭씨와 화씨의 값을 동기화 하기 위해서 각각의 변환 함수를 작성해야함
+- 다음으로 변환함수를 호출하는 함수 작성
+- tryConvert() 함수는 온도와 변환 함수를 매개변수로 받아 값을 리턴해줌
+
+Shared State 적용하기
+
+- 다음은 하위 컴포넌트의 state를 부모 컴포넌트로 올려 shared state를 적용
+- 이것을 Lifting State Up(State 끌어 올리기)라고 함
+- 이를 위해 먼저 TemperatureInput 컴포넌트에서 온도 값을 가져오는 부분을 다음과 같이 수정
+- 이렇게 수정하면 온도를 state에서 가져오지 않고 props에서 가져오게 됨
+- 또 한 가지 컴포넌트의 state를 사용하지 않기 때문에 입력 값이 변경되었을 때 상위 컴포넌트로 변경된 값을 전달해주어야함
+- 이를 위해 handler함수를 수정
+- 최종 코드는 state가 제거되고 상위 컴포넌트에서 전달받은 값
+
+Calculator컴포넌트 수정하기
+
+- State는 temperature, scale 2개 사용
+- 이를 이용해 변환 함수를 통해 섭씨와 화씨 온도를 구해 사용
+- TemperatureInput컴포넌트를 상이하는 부분에서는 온도와 단위를 props로 넣어줌
+- 값이 변경되면 업데이트를 위한 함수
+
+합성
+
+- 합성(Composition)은 '여러 개의 컴포넌트를 합쳐서 새로운 컴포넌트를 만드는 것'
+- 조합 방법에 따라 합성의 사용 기법은 다음과 같이 나눌 수 있음
+
+Containment(담다, 포함하다, 격리하다)
+
+- 특정 컴포넌트가 하위 컴포넌트를 포함하는 형태의 합성 방법
+- 컴포넌트에 따라서는 어떤 자식 엘리먼트가 들어올 지 미리 예상할 수 없는 경우가 있음
+- 범용적인 '박스'역할을 하는 Sidebar또는 Dialog와 같은 컴포넌트에서 특히 자주 볼 수 있음
+- 이런 컴포넌트에서는 children prop을 사용해 자식 엘리먼트를 출력에 그대로 전달하는 것이 좋음
+- 이때 children prop은 컴포넌트의 props에 기본적으로 들어있는 chidren속성을 사용
+
+Specialization(특수화, 전문화)
+
+- 웰컴다이어로그는 다이어로그의 특별한 케이스
+- 범용적인 개념을 구별이 되게 구체화 하는 것을 특수화라고함
+- 객체지향 언어에서는 상속을 사용해 특수화 구현
+- 리액트에서는 합성을 사용해 특수화 구현
+
+React.createElement()
+
+- jsx를 사용하지 않는 경우이 props전달방법
+- jsx를 사용하지 않고 리액트로 엘리먼트를 생성하는 방법
+
+## 5월 29일 강의
+
+select 태그
+
+- select 태그는 옵션 메뉴를 제공하는 드롭다운 리스트(drop-down list)를 정의할 때 사용
+
+file input 태그
+
+- File input태그는 그 값이 일기 전용이기 때문에 리액트에서는 비제어 컴포넌트가 됨
+
+Input Null Value
+
+- 제어 컴포넌트에 value props을 정해진 값으로 넣으면 코드를 수정하지 않는 한 입력값을 바꿀 수 없음
+- 만약 value props는 넣되 자유롭게 입력할 수 있게 만들고 싶다면 값이 undefined 또는 null을 넣어주면 됨
+
+사용자 정보 입력받기
+
+- src/chapter_11 폴더 생성 -> SignUp.jsx 함수형 컴포넌트 생성 -> 컴포넌트에 이름 입력코드 작성 -> index.js 파일 수정 -> 앱 실행 후 정상동작 확인 -> 성별 입력코드 추가
+
 ## 5월 22일 강의
 
 폼(FORM)
